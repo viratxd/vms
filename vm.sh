@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # =============================
-#  VM Manager Made By Love Hopingboyz
+# Enhanced Multi-VM Manager
 # =============================
 
 # Function to display header
@@ -362,8 +362,8 @@ show_vm_info() {
         echo "=========================================="
         echo "OS: $OS_TYPE"
         echo "Hostname: $HOSTNAME"
-        echo "Username: $USERNAME"
-        echo "Password: $PASSWORD"
+        echo "Username: root"
+        echo "Password: root"
         echo "SSH Port: $SSH_PORT"
         echo "Memory: $MEMORY MB"
         echo "CPUs: $CPUS"
