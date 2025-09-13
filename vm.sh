@@ -57,8 +57,8 @@ validate_input() {
             fi
             ;;
         "port")
-            if ! [[ "$value" =~ ^[0-9]+$ ]] || [ "$value" -lt 1024 ] || [ "$value" -gt 65535 ]; then
-                print_status "ERROR" "Must be a valid port number (1024-65535)"
+            if ! [[ "$value" =~ ^[0-9]+$ ]] || [ "$value" -lt 23 ] || [ "$value" -gt 65535 ]; then
+                print_status "ERROR" "Must be a valid port number (23-65535)"
                 return 1
             fi
             ;;
@@ -125,8 +125,8 @@ OS_TYPE="$OS_TYPE"
 CODENAME="$CODENAME"
 IMG_URL="$IMG_URL"
 HOSTNAME="$HOSTNAME"
-USERNAME="$USERNAME"
-PASSWORD="$PASSWORD"
+USERNAME="root"
+PASSWORD="root"
 DISK_SIZE="$DISK_SIZE"
 MEMORY="$MEMORY"
 CPUS="$CPUS"
@@ -173,8 +173,8 @@ create_new_vm() {
     done
 
     while true; do
-        read -p "$(print_status "INPUT" "Disk size (default: 20G): ")" DISK_SIZE
-        DISK_SIZE="${DISK_SIZE:-20G}"
+        read -p "$(print_status "INPUT" "Disk size (default: 1024G): ")" DISK_SIZE
+        DISK_SIZE="${DISK_SIZE:-1024G}"
         if validate_input "size" "$DISK_SIZE"; then
             break
         fi
@@ -458,8 +458,9 @@ trap cleanup EXIT
 check_dependencies
 
 # Initialize paths
-VM_DIR="${VM_DIR:-$HOME/vms}"
+VM_DIR="${VM_DIR:-/home/user/vm}"
 mkdir -p "$VM_DIR"
+
 
 # Supported OS list
 declare -A OS_OPTIONS=(
