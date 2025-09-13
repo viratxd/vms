@@ -458,7 +458,7 @@ trap cleanup EXIT
 check_dependencies
 
 # Initialize paths
-VM_DIR="${VM_DIR:-/vms}"
+VM_DIR="${VM_DIR:-$HOME/vms}"
 mkdir -p "$VM_DIR"
 
 
